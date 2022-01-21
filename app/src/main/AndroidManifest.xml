@@ -13,10 +13,13 @@
             android:name=".activity.DashboardActivity"
             android:exported="false" />
         <activity
+            android:name=".activity.KeuzeVakkenActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.SignInActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.VakkenActivity"
+            android:name=".activity.VerplichteVakkenActivity"
             android:exported="false" />
         <activity
             android:name=".activity.MainActivity"

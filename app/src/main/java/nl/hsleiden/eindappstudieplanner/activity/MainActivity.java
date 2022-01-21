@@ -12,7 +12,6 @@ import nl.hsleiden.eindappstudieplanner.DAO.DAOvak;
 import nl.hsleiden.eindappstudieplanner.R;
 
 public class MainActivity extends AppCompatActivity {
-    DAOvak dao = new DAOvak();
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

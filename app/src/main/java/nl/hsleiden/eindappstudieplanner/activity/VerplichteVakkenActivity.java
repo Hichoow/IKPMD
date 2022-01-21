@@ -16,14 +16,14 @@ import nl.hsleiden.eindappstudieplanner.fragment.Jaar2Fragment;
 import nl.hsleiden.eindappstudieplanner.fragment.Jaar3Fragment;
 import nl.hsleiden.eindappstudieplanner.fragment.Jaar4Fragment;
 
-public class VakkenActivity extends AppCompatActivity {
+public class VerplichteVakkenActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vakken);
+        setContentView(R.layout.activity_verplichtevakken);
 
         mAuth = FirebaseAuth.getInstance();
 

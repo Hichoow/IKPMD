@@ -23,7 +23,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import nl.hsleiden.eindappstudieplanner.R;
 
 public class SignInActivity extends AppCompatActivity {
-    private int RC_SIGN_IN = 120;
+    private final int RC_SIGN_IN = 120;
     private FirebaseAuth mAuth;
     private GoogleSignInClient googleSignInClient;
     @Override

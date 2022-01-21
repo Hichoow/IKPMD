@@ -8,9 +8,6 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import nl.hsleiden.eindappstudieplanner.DAO.DAOvak;
 import nl.hsleiden.eindappstudieplanner.R;
 import nl.hsleiden.eindappstudieplanner.model.Vak;
@@ -29,10 +26,13 @@ public class DashboardActivity extends AppCompatActivity {
 
         Button vakken_btn = findViewById(R.id.vakken_btn);
         vakken_btn.setOnClickListener(v -> {
-            startActivity(new Intent(DashboardActivity.this, VakkenActivity.class));
-
+            startActivity(new Intent(DashboardActivity.this, VerplichteVakkenActivity.class));
         });
 
+        Button keuzeVakkenBtn = findViewById(R.id.keuzeVakkenBtn);
+        keuzeVakkenBtn.setOnClickListener(v -> {
+            startActivity(new Intent(DashboardActivity.this, KeuzeVakkenActivity.class));
+        });
 
         Button sign_out_btn = findViewById(R.id.sign_out_btn);
         sign_out_btn.setOnClickListener(v -> {
@@ -41,12 +41,15 @@ public class DashboardActivity extends AppCompatActivity {
             finish();
         });
 
+
+
         dao.readData(value -> {
             if (!value.contains(mAuth.getUid())){
                 setupEersteJaarsVakken();
                 setupTweedeJaarsVakken();
                 setupDerdeJaarsVakken();
                 setupVierdeJaarsVakken();
+                setupKeuzeVakken();
             }
 
         });
@@ -54,74 +57,82 @@ public class DashboardActivity extends AppCompatActivity {
 
     public void setupEersteJaarsVakken(){
         Vak iarch = new Vak("IARCH", 1, false, true, 10, "", 1);
-        dao.add(iarch);
+        dao.addVak(iarch);
         Vak iiwis = new Vak("IIWIS", 1, false, true, 10, "", 1);
-        dao.add(iiwis);
+        dao.addVak(iiwis);
         Vak iipr = new Vak("IIPR", 1, false, true, 10, "", 1);
-        dao.add(iipr);
+        dao.addVak(iipr);
         Vak ipohbo = new Vak("IPOHBO", 1, false, true, 10, "", 1);
-        dao.add(ipohbo);
+        dao.addVak(ipohbo);
         Vak ioo1 = new Vak("IOO1", 1, false, true, 10, "", 1);
-        dao.add(ioo1);
+        dao.addVak(ioo1);
         Vak irdb = new Vak("IRDB", 1, false, true, 10, "", 1);
-        dao.add(irdb);
+        dao.addVak(irdb);
         Vak iibui = new Vak("IIBUI", 1, false, true, 10, "", 1);
-        dao.add(iibui);
+        dao.addVak(iibui);
         Vak inet = new Vak("INET", 1, false, true, 10, "", 1);
-        dao.add(inet);
+        dao.addVak(inet);
         Vak ipodm = new Vak("IPODM", 1, false, true, 10, "", 1);
-        dao.add(ipodm);
+        dao.addVak(ipodm);
         Vak ipomedt = new Vak("IPOMEDT", 1, false, true, 10, "", 1);
-        dao.add(ipomedt);
+        dao.addVak(ipomedt);
         Vak iwder = new Vak("IWDER", 1, false, true, 10, "", 1);
-        dao.add(iwder);
+        dao.addVak(iwder);
         Vak iooa = new Vak("IOOA", 1, false, true, 10, "", 1);
-        dao.add(iooa);
+        dao.addVak(iooa);
         Vak iifito = new Vak("IIFITO", 1, false, true, 10, "", 1);
-        dao.add(iifito);
+        dao.addVak(iifito);
         Vak iprop = new Vak("IPROP", 1, false, true, 10, "", 1);
-        dao.add(iprop);
+        dao.addVak(iprop);
         Vak ipose = new Vak("IPOSE", 1, false, true, 10, "", 1);
-        dao.add(ipose);
+        dao.addVak(ipose);
         Vak ipofit = new Vak("IPOFIT", 1, false, true, 10, "", 1);
-        dao.add(ipofit);
+        dao.addVak(ipofit);
         Vak iipbdama = new Vak("IIPBDAMA", 1, false, true, 10, "", 1);
-        dao.add(iipbdama);
+        dao.addVak(iipbdama);
         Vak iipiata = new Vak("IIPIATA", 1, false, true, 10, "", 1);
-        dao.add(iipiata);
+        dao.addVak(iipiata);
         Vak iipsene = new Vak("IIPSENE", 1, false, true, 10, "", 1);
-        dao.add(iipsene);
+        dao.addVak(iipsene);
         Vak iipforit = new Vak("IIPFORIT", 1, false, true, 10, "", 1);
-        dao.add(iipforit);
+        dao.addVak(iipforit);
         Vak iibpm = new Vak("IIBPM", 1, false, true, 10, "", 1);
-        dao.add(iibpm);
+        dao.addVak(iibpm);
         Vak icommpr = new Vak("ICOMMPR", 1, false, true, 10, "", 1);
-        dao.add(icommpr);
+        dao.addVak(icommpr);
         Vak islpr = new Vak("ISLPR", 1, false, true, 10, "", 1);
-        dao.add(islpr);
+        dao.addVak(islpr);
     }
     public void setupTweedeJaarsVakken(){
         Vak idbms = new Vak("IDBMS", 1, false, true, 4, "", 2);
-        dao.add(idbms);
+        dao.addVak(idbms);
         Vak ipro2 = new Vak("IPRO2", 1, false, true, 4, "", 2);
-        dao.add(ipro2);
+        dao.addVak(ipro2);
         Vak imal = new Vak("IMAL", 1, false, true, 4, "", 3);
-        dao.add(imal);
+        dao.addVak(imal);
         Vak icommha = new Vak("ICOMMHA", 1, false, true, 4, "", 2);
-        dao.add(icommha);
+        dao.addVak(icommha);
         Vak ispv = new Vak("ISPV", 1, false, true, 4, "", 2);
-        dao.add(ispv);
+        dao.addVak(ispv);
     }
     public void setupDerdeJaarsVakken(){
         Vak iethi = new Vak("IETHI", 1, false, true, 4, "", 3);
-        dao.add(iethi);
+        dao.addVak(iethi);
         Vak iitorg = new Vak("IITORG", 1, false, true, 4, "", 3);
-        dao.add(iitorg);
+        dao.addVak(iitorg);
         Vak isecu = new Vak("ISECU", 1, false, true, 4, "", 3);
-        dao.add(isecu);
+        dao.addVak(isecu);
     }
     public void setupVierdeJaarsVakken(){
 
+    }
+    public void setupKeuzeVakken(){
+        Vak iethi = new Vak("IETHI", 1, false, true, 4, "", 3);
+        dao.addVak(iethi);
+        Vak iitorg = new Vak("IITORG", 1, false, true, 4, "", 3);
+        dao.addVak(iitorg);
+        Vak isecu = new Vak("ISECU", 1, false, true, 4, "", 3);
+        dao.addVak(isecu);
     }
 
 

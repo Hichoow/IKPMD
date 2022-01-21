@@ -28,29 +28,16 @@ public class DAOvak {
         vakkenList = new ArrayList<>();
     }
 
-    public Task<Void> add(Vak vak){
+    public Task<Void> addVak(Vak vak){
         return databaseReference.child("users").child(mAuth.getUid()).child(String.valueOf(vak.getJaar())).child(vak.getName()).setValue(vak);
+    }
+
+    public Task<Void> addKeuzeVak(Vak vak){
+        return databaseReference.child("users").child(mAuth.getUid()).child("keuzevakken").setValue(vak);
     }
 
     public Task<Void> update(int jaar, String vakNaam, HashMap<String, Object> hashMap){
         return databaseReference.child("users").child(mAuth.getUid()).child(String.valueOf(jaar)).child(vakNaam).updateChildren(hashMap);
-    }
-
-    public void readData(MyCallback myCallback) {
-
-        databaseReference.child("users")
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    String item = snapshot.getKey();
-                    uuidList.add(item);
-                }
-                myCallback.onCallback(uuidList);
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        });
     }
 
     public DatabaseReference getVakByName(int jaar, String vakNaam){
@@ -67,6 +54,23 @@ public class DAOvak {
                             vakkenList.add(item);
                         }
                         myCallback.onCallback(vakkenList);
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {}
+                });
+    }
+
+    public void readData(MyCallback myCallback) {
+
+        databaseReference.child("users")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            String item = snapshot.getKey();
+                            uuidList.add(item);
+                        }
+                        myCallback.onCallback(uuidList);
                     }
                     @Override
                     public void onCancelled(DatabaseError databaseError) {}

@@ -9,15 +9,39 @@
 
     <Button
         android:id="@+id/vakken_btn"
-        android:layout_width="108dp"
-        android:layout_height="46dp"
-        android:text="Vakken"
+        android:layout_width="197dp"
+        android:layout_height="58dp"
+        android:text="Verplichte Vakken"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.191" />
+
+    <Button
+        android:id="@+id/keuzeVakkenBtn"
+        android:layout_width="197dp"
+        android:layout_height="58dp"
+        android:text="Keuze Vakken"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.306" />
+
+    <Button
+        android:id="@+id/voortgangBtn"
+        android:layout_width="197dp"
+        android:layout_height="58dp"
+        android:text="Voortgang"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.423" />
 
     <Button
         android:id="@+id/sign_out_btn"
