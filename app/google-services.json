@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "172238525762",
+    "firebase_url": "https://ikpmd-4f306-default-rtdb.firebaseio.com",
+    "project_id": "ikpmd-4f306",
+    "storage_bucket": "ikpmd-4f306.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:172238525762:android:829fc2f8503dd90ecf64db",
+        "android_client_info": {
+          "package_name": "nl.hsleiden.eindappstudieplanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "172238525762-somk2jdehvfq19s0710cl8dtgq0pt9c9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEDfJWD7XazuwzJLGeKeTP6q4KT-ZBTts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "172238525762-somk2jdehvfq19s0710cl8dtgq0pt9c9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:172238525762:android:3161276fcd9f5a30cf64db",
+        "android_client_info": {
+          "package_name": "nl.hsleiden.studieplanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "172238525762-nses0q1c991stl1ubuqne61iuud3ttg5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nl.hsleiden.studieplanner",
+            "certificate_hash": "5d44f267e8d89862ba906f40dfc3ff8cf0f5d5cc"
+          }
+        },
+        {
+          "client_id": "172238525762-somk2jdehvfq19s0710cl8dtgq0pt9c9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEDfJWD7XazuwzJLGeKeTP6q4KT-ZBTts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "172238525762-somk2jdehvfq19s0710cl8dtgq0pt9c9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
