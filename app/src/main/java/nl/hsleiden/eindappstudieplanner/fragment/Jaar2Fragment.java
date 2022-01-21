@@ -59,7 +59,7 @@ public class Jaar2Fragment extends Fragment {
         dropdown = view.findViewById(R.id.spinner1);
 
 
-        dao.getVakken(2, value -> {
+        dao.getVerplichteVakken(2, value -> {
             vakken.addAll(value);
             ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
                     android.R.layout.simple_spinner_item, vakken);
@@ -72,7 +72,7 @@ public class Jaar2Fragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 item = dropdown.getSelectedItem().toString();
-                dao.getVakByName(2, item)
+                dao.getVerplichteVakByName(2, item)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -133,7 +133,7 @@ public class Jaar2Fragment extends Fragment {
 
 
             System.out.println(hashMap);
-            dao.update(2, item, hashMap);
+            dao.updateVerplichteVakken(2, item, hashMap);
 
         });
         return view;

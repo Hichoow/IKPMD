@@ -3,7 +3,6 @@ package nl.hsleiden.eindappstudieplanner.fragment;
 import android.app.Fragment;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,6 @@ import java.util.HashMap;
 
 import nl.hsleiden.eindappstudieplanner.DAO.DAOvak;
 import nl.hsleiden.eindappstudieplanner.R;
-import nl.hsleiden.eindappstudieplanner.model.Vak;
 
 public class Jaar1Fragment extends Fragment {
 
@@ -64,7 +62,7 @@ public class Jaar1Fragment extends Fragment {
         dropdown = view.findViewById(R.id.spinner1);
 
 
-        dao.getVakken(1, value -> {
+        dao.getVerplichteVakken(1, value -> {
             vakken.addAll(value);
             ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
                     android.R.layout.simple_spinner_item, vakken);
@@ -77,7 +75,7 @@ public class Jaar1Fragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 item = dropdown.getSelectedItem().toString();
-                dao.getVakByName(1, item)
+                dao.getVerplichteVakByName(1, item)
                         .addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -136,7 +134,7 @@ public class Jaar1Fragment extends Fragment {
                 hashMap.put("verplicht", false);
             }
             System.out.println(hashMap);
-            dao.update(1, item, hashMap);
+            dao.updateVerplichteVakken(1, item, hashMap);
 
         });
 

@@ -33,19 +33,27 @@ public class DAOvak {
     }
 
     public Task<Void> addKeuzeVak(Vak vak){
-        return databaseReference.child("users").child(mAuth.getUid()).child("keuzevakken").setValue(vak);
+        return databaseReference.child("users").child(mAuth.getUid()).child("keuzevakken").child(vak.getName()).setValue(vak);
     }
 
-    public Task<Void> update(int jaar, String vakNaam, HashMap<String, Object> hashMap){
+    public Task<Void> updateVerplichteVakken(int jaar, String vakNaam, HashMap<String, Object> hashMap){
         return databaseReference.child("users").child(mAuth.getUid()).child(String.valueOf(jaar)).child(vakNaam).updateChildren(hashMap);
     }
 
-    public DatabaseReference getVakByName(int jaar, String vakNaam){
+    public Task<Void> updateKeuzeVakken(String positie, String vakNaam, HashMap<String, Object> hashMap){
+        return databaseReference.child("users").child(mAuth.getUid()).child(positie).child(vakNaam).updateChildren(hashMap);
+    }
+
+    public DatabaseReference getVerplichteVakByName(int jaar, String vakNaam){
         return databaseReference.child("users").child(mAuth.getUid()).child(String.valueOf(jaar)).child(vakNaam);
     }
 
-    public void getVakken(int jaar, MyCallback myCallback){
-        databaseReference.child("users").child(mAuth.getUid()).child(String.valueOf(jaar))
+    public DatabaseReference getKeuzeVakByName(String positie, String vakNaam){
+        return databaseReference.child("users").child(mAuth.getUid()).child(positie).child(vakNaam);
+    }
+
+    public void getVerplichteVakken(int positie, MyCallback myCallback){
+        databaseReference.child("users").child(mAuth.getUid()).child(String.valueOf(positie))
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -59,6 +67,22 @@ public class DAOvak {
                     public void onCancelled(DatabaseError databaseError) {}
                 });
     }
+    public void getKeuzeVakken(String positie, MyCallback myCallback){
+        databaseReference.child("users").child(mAuth.getUid()).child(String.valueOf(positie))
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            String item = snapshot.getKey();
+                            vakkenList.add(item);
+                        }
+                        myCallback.onCallback(vakkenList);
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {}
+                });
+    }
+
 
     public void readData(MyCallback myCallback) {
 

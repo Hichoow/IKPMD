@@ -127,12 +127,14 @@ public class DashboardActivity extends AppCompatActivity {
 
     }
     public void setupKeuzeVakken(){
-        Vak iethi = new Vak("IETHI", 1, false, true, 4, "", 3);
-        dao.addVak(iethi);
-        Vak iitorg = new Vak("IITORG", 1, false, true, 4, "", 3);
-        dao.addVak(iitorg);
-        Vak isecu = new Vak("ISECU", 1, false, true, 4, "", 3);
-        dao.addVak(isecu);
+        Vak ikpmd = new Vak("IKPMD", 1, false, true, 4, "", 3);
+        dao.addKeuzeVak(ikpmd);
+        Vak ikue = new Vak("IKUE", 1, false, true, 4, "", 3);
+        dao.addKeuzeVak(ikue);
+        Vak ikrefact = new Vak("IKREFACT", 1, false, true, 4, "", 3);
+        dao.addKeuzeVak(ikrefact);
+        Vak ikfram = new Vak("IKFRAM", 1, false, true, 4, "", 3);
+        dao.addKeuzeVak(ikfram);
     }
 
 
