@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -19,6 +20,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.shobhitpuri.custombuttons.GoogleSignInButton;
 
 import nl.hsleiden.eindappstudieplanner.R;
 
@@ -40,7 +42,8 @@ public class SignInActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        SignInButton btn = findViewById(R.id.sign_in_btn);
+        GoogleSignInButton btn = findViewById(R.id.sign_in_btn);
+
         btn.setOnClickListener(v ->
                 signIn()
 
@@ -72,16 +75,17 @@ public class SignInActivity extends AppCompatActivity {
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Log.d("SignInActivity", "signInWithCredential:success");
-                            startActivity(new Intent(SignInActivity.this, DashboardActivity.class));
-                            finish();
-                        } else {
-                            Log.w("SignInActivity", "signInWithCredential:failure", task.getException());
-                        }
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        Log.d("SignInActivity", "signInWithCredential:success");
+                        Toast.makeText(this, "Sign In Successful",
+                                Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(SignInActivity.this, DashboardActivity.class));
+                        finish();
+                    } else {
+                        Toast.makeText(this, "Sign In Failed",
+                                Toast.LENGTH_LONG).show();
+                        Log.w("SignInActivity", "signInWithCredential:failure", task.getException());
                     }
                 });
     }

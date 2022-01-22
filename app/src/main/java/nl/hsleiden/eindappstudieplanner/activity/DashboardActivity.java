@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -38,6 +39,8 @@ public class DashboardActivity extends AppCompatActivity {
         sign_out_btn.setOnClickListener(v -> {
             mAuth.signOut();
             startActivity(new Intent(DashboardActivity.this, SignInActivity.class));
+            Toast.makeText(this, "Signed Out",
+                    Toast.LENGTH_LONG).show();
             finish();
         });
 
