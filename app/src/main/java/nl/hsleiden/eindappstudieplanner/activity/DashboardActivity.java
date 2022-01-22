@@ -39,8 +39,7 @@ public class DashboardActivity extends AppCompatActivity {
         sign_out_btn.setOnClickListener(v -> {
             mAuth.signOut();
             startActivity(new Intent(DashboardActivity.this, SignInActivity.class));
-            Toast.makeText(this, "Signed Out",
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Signed Out", Toast.LENGTH_LONG).show();
             finish();
         });
 

@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -120,6 +121,7 @@ public class KeuzeVakkenActivity extends AppCompatActivity {
             }
             System.out.println(hashMap);
             dao.updateKeuzeVakken("keuzevakken", item, hashMap);
+            Toast.makeText(this, "Succesvol opgeslagen", Toast.LENGTH_LONG).show();
         });
     }
 }

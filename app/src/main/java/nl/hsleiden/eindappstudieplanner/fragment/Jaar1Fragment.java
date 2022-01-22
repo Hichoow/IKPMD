@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -135,6 +136,7 @@ public class Jaar1Fragment extends Fragment {
             }
             System.out.println(hashMap);
             dao.updateVerplichteVakken(1, item, hashMap);
+            Toast.makeText(getContext(), "Succesvol opgeslagen", Toast.LENGTH_LONG).show();
 
         });
 
