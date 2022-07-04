@@ -74,23 +74,6 @@ public class DAOvak {
                 });
     }
 
-    public void getAantalStudieputnen(int jaar){
-        databaseReference.child("users").child(mAuth.getUid()).child(String.valueOf(jaar))
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            if (snapshot.getKey().contains("totalePunten")){
-                                studiepunten = (Long) snapshot.getValue();
-                            }
-                        }
-                    }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {}
-                });
-
-    }
-
     public void getKeuzeVakken(String positie, MyCallback myCallback){
         databaseReference.child("users").child(mAuth.getUid()).child(String.valueOf(positie))
                 .addListenerForSingleValueEvent(new ValueEventListener() {

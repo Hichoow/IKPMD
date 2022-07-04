@@ -44,6 +44,11 @@ public class DashboardActivity extends AppCompatActivity {
             finish();
         });
 
+        Button test = findViewById(R.id.testbtn);
+        test.setOnClickListener(v -> {
+            startActivity(new Intent(DashboardActivity.this, GrafiekenActivity.class));
+        });
+
 
 
         dao.readData(value -> {
