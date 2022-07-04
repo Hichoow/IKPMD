@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Eindappstudieplanner">
         <activity
+            android:name=".activity.GrafiekenActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.DashboardActivity"
             android:exported="false" />
         <activity

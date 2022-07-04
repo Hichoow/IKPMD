@@ -19,6 +19,7 @@ public class DAOvak {
     private FirebaseAuth mAuth;
     private ArrayList<String> uuidList;
     private ArrayList<String> vakkenList;
+    private Long studiepunten;
 
     public DAOvak(){
         FirebaseDatabase db = FirebaseDatabase.getInstance();
@@ -26,9 +27,10 @@ public class DAOvak {
         mAuth = FirebaseAuth.getInstance();
         uuidList = new ArrayList<>();
         vakkenList = new ArrayList<>();
+        studiepunten = 0L;
     }
 
-    public Task<Void> addVak(Vak vak){
+    public Task<Void> addVerplichteVak(Vak vak){
         return databaseReference.child("users").child(mAuth.getUid()).child(String.valueOf(vak.getJaar())).child(vak.getName()).setValue(vak);
     }
 
@@ -44,6 +46,10 @@ public class DAOvak {
         return databaseReference.child("users").child(mAuth.getUid()).child(positie).child(vakNaam).updateChildren(hashMap);
     }
 
+    public Task<Void> aantalStudiepunten(int jaar, int punten){
+        return databaseReference.child("users").child(mAuth.getUid()).child(String.valueOf(jaar)).child("totalePunten").setValue(punten);
+    }
+
     public DatabaseReference getVerplichteVakByName(int jaar, String vakNaam){
         return databaseReference.child("users").child(mAuth.getUid()).child(String.valueOf(jaar)).child(vakNaam);
     }
@@ -52,8 +58,8 @@ public class DAOvak {
         return databaseReference.child("users").child(mAuth.getUid()).child(positie).child(vakNaam);
     }
 
-    public void getVerplichteVakken(int positie, MyCallback myCallback){
-        databaseReference.child("users").child(mAuth.getUid()).child(String.valueOf(positie))
+    public void getVerplichteVakken(int jaar, MyCallback myCallback){
+        databaseReference.child("users").child(mAuth.getUid()).child(String.valueOf(jaar))
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -67,6 +73,7 @@ public class DAOvak {
                     public void onCancelled(DatabaseError databaseError) {}
                 });
     }
+
     public void getKeuzeVakken(String positie, MyCallback myCallback){
         databaseReference.child("users").child(mAuth.getUid()).child(String.valueOf(positie))
                 .addListenerForSingleValueEvent(new ValueEventListener() {

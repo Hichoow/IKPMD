@@ -70,29 +70,7 @@ public class KeuzeVakkenActivity extends AppCompatActivity {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                    if (snapshot.getKey().contains("cijfer")){
-                                        vakCijferTxt.setText(String.valueOf(snapshot.getValue()));
-                                    }
-                                    if (snapshot.getKey().contains("studiepunten")){
-                                        vakSpTxt.setText(String.valueOf(snapshot.getValue()));
-                                    }
-                                    if (snapshot.getKey().contains("aantekeningen")){
-                                        vakAtknTXT.setText((String) snapshot.getValue());
-                                    }
-                                    if (snapshot.getKey().contains("afgerond")){
-                                        if ((Boolean) snapshot.getValue()){
-                                            afgerondBtn1.setChecked(true);
-                                        }else{
-                                            afgerondBtn2.setChecked(true);
-                                        }
-                                    }
-                                    if (snapshot.getKey().contains("verplicht")){
-                                        if ((Boolean) snapshot.getValue()){
-                                            verplichtBtn1.setChecked(true);
-                                        }else{
-                                            verplichtBtn2.setChecked(true);
-                                        }
-                                    }
+                                    snapshotLoop(snapshot);
                                 }
                             }
                             @Override
@@ -105,23 +83,53 @@ public class KeuzeVakkenActivity extends AppCompatActivity {
             }
         });
         opslaanBtn.setOnClickListener(v -> {
-            HashMap<String, Object> hashMap = new HashMap<>();
-            hashMap.put("cijfer", Double.valueOf(String.valueOf(vakCijferTxt.getText())));
-            hashMap.put("studiepunten", Integer.valueOf(String.valueOf(vakSpTxt.getText())));
-            hashMap.put("aantekeningen", vakAtknTXT.getText().toString());
-            if (afgerondBtn1.isChecked()){
-                hashMap.put("afgerond", true);
-            } else if(afgerondBtn2.isChecked()){
-                hashMap.put("afgerond", false);
-            }
-            if (verplichtBtn1.isChecked()){
-                hashMap.put("verplicht", true);
-            } else if(verplichtBtn2.isChecked()){
-                hashMap.put("verplicht", false);
-            }
-            System.out.println(hashMap);
-            dao.updateKeuzeVakken("keuzevakken", item, hashMap);
+            saveData();
             Toast.makeText(this, "Succesvol opgeslagen", Toast.LENGTH_LONG).show();
         });
+    }
+
+    public void saveData(){
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("cijfer", Double.valueOf(String.valueOf(vakCijferTxt.getText())));
+        hashMap.put("studiepunten", Integer.valueOf(String.valueOf(vakSpTxt.getText())));
+        hashMap.put("aantekeningen", vakAtknTXT.getText().toString());
+        if (afgerondBtn1.isChecked()){
+            hashMap.put("afgerond", true);
+        } else if(afgerondBtn2.isChecked()){
+            hashMap.put("afgerond", false);
+        }
+        if (verplichtBtn1.isChecked()){
+            hashMap.put("verplicht", true);
+        } else if(verplichtBtn2.isChecked()){
+            hashMap.put("verplicht", false);
+        }
+        System.out.println(hashMap);
+        dao.updateKeuzeVakken("keuzevakken", item, hashMap);
+    }
+
+    public void snapshotLoop(DataSnapshot snapshot){
+        if (snapshot.getKey().contains("cijfer")){
+            vakCijferTxt.setText(String.valueOf(snapshot.getValue()));
+        }
+        if (snapshot.getKey().contains("studiepunten")){
+            vakSpTxt.setText(String.valueOf(snapshot.getValue()));
+        }
+        if (snapshot.getKey().contains("aantekeningen")){
+            vakAtknTXT.setText((String) snapshot.getValue());
+        }
+        if (snapshot.getKey().contains("afgerond")){
+            if ((Boolean) snapshot.getValue()){
+                afgerondBtn1.setChecked(true);
+            }else{
+                afgerondBtn2.setChecked(true);
+            }
+        }
+        if (snapshot.getKey().contains("verplicht")){
+            if ((Boolean) snapshot.getValue()){
+                verplichtBtn1.setChecked(true);
+            }else{
+                verplichtBtn2.setChecked(true);
+            }
+        }
     }
 }

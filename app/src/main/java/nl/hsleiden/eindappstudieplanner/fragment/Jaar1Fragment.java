@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,13 +28,14 @@ import java.util.HashMap;
 
 import nl.hsleiden.eindappstudieplanner.DAO.DAOvak;
 import nl.hsleiden.eindappstudieplanner.R;
+import nl.hsleiden.eindappstudieplanner.activity.KeuzeVakkenActivity;
 
 public class Jaar1Fragment extends Fragment {
 
     private RadioGroup verplichtGroup1;
     private EditText vakCijferTxt;
     private EditText vakAtknTXT;
-    private EditText vakSpTxt;
+    private TextView vakSpTxt;
     private Button opslaanBtn;
     private RadioButton afgerondBtn1;
     private RadioButton afgerondBtn2;
@@ -142,6 +144,8 @@ public class Jaar1Fragment extends Fragment {
 
         return view;
     }
+
+
 
 
 }

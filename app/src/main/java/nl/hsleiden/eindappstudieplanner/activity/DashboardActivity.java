@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import nl.hsleiden.eindappstudieplanner.DAO.DAOvak;
 import nl.hsleiden.eindappstudieplanner.R;
+import nl.hsleiden.eindappstudieplanner.model.Studiepunten;
 import nl.hsleiden.eindappstudieplanner.model.Vak;
 
 public class DashboardActivity extends AppCompatActivity {
@@ -43,6 +44,11 @@ public class DashboardActivity extends AppCompatActivity {
             finish();
         });
 
+        Button test = findViewById(R.id.testbtn);
+        test.setOnClickListener(v -> {
+            startActivity(new Intent(DashboardActivity.this, GrafiekenActivity.class));
+        });
+
 
 
         dao.readData(value -> {
@@ -58,75 +64,78 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     public void setupEersteJaarsVakken(){
-        Vak iarch = new Vak("IARCH", 1, false, true, 10, "", 1);
-        dao.addVak(iarch);
-        Vak iiwis = new Vak("IIWIS", 1, false, true, 10, "", 1);
-        dao.addVak(iiwis);
-        Vak iipr = new Vak("IIPR", 1, false, true, 10, "", 1);
-        dao.addVak(iipr);
-        Vak ipohbo = new Vak("IPOHBO", 1, false, true, 10, "", 1);
-        dao.addVak(ipohbo);
-        Vak ioo1 = new Vak("IOO1", 1, false, true, 10, "", 1);
-        dao.addVak(ioo1);
-        Vak irdb = new Vak("IRDB", 1, false, true, 10, "", 1);
-        dao.addVak(irdb);
-        Vak iibui = new Vak("IIBUI", 1, false, true, 10, "", 1);
-        dao.addVak(iibui);
-        Vak inet = new Vak("INET", 1, false, true, 10, "", 1);
-        dao.addVak(inet);
-        Vak ipodm = new Vak("IPODM", 1, false, true, 10, "", 1);
-        dao.addVak(ipodm);
-        Vak ipomedt = new Vak("IPOMEDT", 1, false, true, 10, "", 1);
-        dao.addVak(ipomedt);
-        Vak iwder = new Vak("IWDER", 1, false, true, 10, "", 1);
-        dao.addVak(iwder);
-        Vak iooa = new Vak("IOOA", 1, false, true, 10, "", 1);
-        dao.addVak(iooa);
-        Vak iifito = new Vak("IIFITO", 1, false, true, 10, "", 1);
-        dao.addVak(iifito);
-        Vak iprop = new Vak("IPROP", 1, false, true, 10, "", 1);
-        dao.addVak(iprop);
-        Vak ipose = new Vak("IPOSE", 1, false, true, 10, "", 1);
-        dao.addVak(ipose);
-        Vak ipofit = new Vak("IPOFIT", 1, false, true, 10, "", 1);
-        dao.addVak(ipofit);
-        Vak iipbdama = new Vak("IIPBDAMA", 1, false, true, 10, "", 1);
-        dao.addVak(iipbdama);
-        Vak iipiata = new Vak("IIPIATA", 1, false, true, 10, "", 1);
-        dao.addVak(iipiata);
-        Vak iipsene = new Vak("IIPSENE", 1, false, true, 10, "", 1);
-        dao.addVak(iipsene);
-        Vak iipforit = new Vak("IIPFORIT", 1, false, true, 10, "", 1);
-        dao.addVak(iipforit);
-        Vak iibpm = new Vak("IIBPM", 1, false, true, 10, "", 1);
-        dao.addVak(iibpm);
-        Vak icommpr = new Vak("ICOMMPR", 1, false, true, 10, "", 1);
-        dao.addVak(icommpr);
-        Vak islpr = new Vak("ISLPR", 1, false, true, 10, "", 1);
-        dao.addVak(islpr);
+        Vak iarch = new Vak("IARCH", 1, false, true, 3, "", 1);
+        dao.addVerplichteVak(iarch);
+        Vak iiwis = new Vak("IIWIS", 1, false, true, 3, "", 1);
+        dao.addVerplichteVak(iiwis);
+        Vak iipr = new Vak("IIPR", 1, false, true, 4, "", 1);
+        dao.addVerplichteVak(iipr);
+        Vak ipohbo = new Vak("IPOHBO", 1, false, true, 3, "", 1);
+        dao.addVerplichteVak(ipohbo);
+        Vak ioo1 = new Vak("IOO1", 1, false, true, 3, "", 1);
+        dao.addVerplichteVak(ioo1);
+        Vak irdb = new Vak("IRDB", 1, false, true, 3, "", 1);
+        dao.addVerplichteVak(irdb);
+        Vak iibui = new Vak("IIBUI", 1, false, true, 3, "", 1);
+        dao.addVerplichteVak(iibui);
+        Vak inet = new Vak("INET", 1, false, true, 3, "", 1);
+        dao.addVerplichteVak(inet);
+        Vak ipodm = new Vak("IPODM", 1, false, true, 2, "", 1);
+        dao.addVerplichteVak(ipodm);
+        Vak ipomedt = new Vak("IPOMEDT", 1, false, true, 2, "", 1);
+        dao.addVerplichteVak(ipomedt);
+        Vak iwder = new Vak("IWDER", 1, false, true, 3, "", 1);
+        dao.addVerplichteVak(iwder);
+        Vak iooa = new Vak("IOOA", 1, false, true, 4, "", 1);
+        dao.addVerplichteVak(iooa);
+        Vak iifito = new Vak("IIFITO", 1, false, true, 3, "", 1);
+        dao.addVerplichteVak(iifito);
+        Vak iprop = new Vak("IPROP", 1, false, true, 3, "", 1);
+        dao.addVerplichteVak(iprop);
+        Vak ipose = new Vak("IPOSE", 1, false, true, 2, "", 1);
+        dao.addVerplichteVak(ipose);
+        Vak ipofit = new Vak("IPOFIT", 1, false, true, 2, "", 1);
+        dao.addVerplichteVak(ipofit);
+        Vak iibpm = new Vak("IIBPM", 1, false, true, 3, "", 1);
+        dao.addVerplichteVak(iibpm);
+        Vak icommpr = new Vak("ICOMMPR", 1, false, true, 3, "", 1);
+        dao.addVerplichteVak(icommpr);
+        Vak islpr = new Vak("ISLPR", 1, false, true, 1, "", 1);
+        dao.addVerplichteVak(islpr);
+        Studiepunten studiepunten = new Studiepunten(1, 60);
+        dao.aantalStudiepunten(studiepunten.getJaar(), studiepunten.getPunten());
     }
     public void setupTweedeJaarsVakken(){
-        Vak idbms = new Vak("IDBMS", 1, false, true, 4, "", 2);
-        dao.addVak(idbms);
-        Vak ipro2 = new Vak("IPRO2", 1, false, true, 4, "", 2);
-        dao.addVak(ipro2);
-        Vak imal = new Vak("IMAL", 1, false, true, 4, "", 3);
-        dao.addVak(imal);
-        Vak icommha = new Vak("ICOMMHA", 1, false, true, 4, "", 2);
-        dao.addVak(icommha);
+        Vak idbms = new Vak("IDBMS", 1, false, true, 3, "", 2);
+        dao.addVerplichteVak(idbms);
+        Vak ipro2 = new Vak("IPRO2", 1, false, true, 3, "", 2);
+        dao.addVerplichteVak(ipro2);
+        Vak imal = new Vak("IMAL", 1, false, true, 3, "", 3);
+        dao.addVerplichteVak(imal);
+        Vak icommha = new Vak("ICOMMHA", 1, false, true, 3, "", 2);
+        dao.addVerplichteVak(icommha);
         Vak ispv = new Vak("ISPV", 1, false, true, 4, "", 2);
-        dao.addVak(ispv);
+        dao.addVerplichteVak(ispv);
+        Studiepunten studiepunten = new Studiepunten(2, 16);
+        dao.aantalStudiepunten(studiepunten.getJaar(), studiepunten.getPunten());
     }
     public void setupDerdeJaarsVakken(){
         Vak iethi = new Vak("IETHI", 1, false, true, 4, "", 3);
-        dao.addVak(iethi);
+        dao.addVerplichteVak(iethi);
         Vak iitorg = new Vak("IITORG", 1, false, true, 4, "", 3);
-        dao.addVak(iitorg);
+        dao.addVerplichteVak(iitorg);
         Vak isecu = new Vak("ISECU", 1, false, true, 4, "", 3);
-        dao.addVak(isecu);
+        dao.addVerplichteVak(isecu);
+        Studiepunten studiepunten = new Studiepunten(3, 12);
+        dao.aantalStudiepunten(studiepunten.getJaar(), studiepunten.getPunten());
     }
     public void setupVierdeJaarsVakken(){
-
+        Vak iwls = new Vak("IWLS", 1, false, true, 4, "", 4);
+        dao.addVerplichteVak(iwls);
+        Vak iwlab = new Vak("IWLAB", 1, false, true, 4, "", 4);
+        dao.addVerplichteVak(iwlab);
+        Studiepunten studiepunten = new Studiepunten(4, 8);
+        dao.aantalStudiepunten(studiepunten.getJaar(), studiepunten.getPunten());
     }
     public void setupKeuzeVakken(){
         Vak ikpmd = new Vak("IKPMD", 1, false, true, 4, "", 3);
