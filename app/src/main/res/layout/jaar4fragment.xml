@@ -35,6 +35,7 @@
 
                 <EditText
                     android:id="@+id/vakCijferTxt"
+                    android:inputType = "numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Cijfer" />
@@ -50,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:text="Studiepunten: " />
 
-                <EditText
+                <TextView
                     android:id="@+id/vakSpTxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

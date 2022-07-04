@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,7 +32,7 @@ public class Jaar4Fragment extends Fragment {
 
     private EditText vakCijferTxt;
     private EditText vakAtknTXT;
-    private EditText vakSpTxt;
+    private TextView vakSpTxt;
     private Button opslaanBtn;
     private RadioButton afgerondBtn1;
     private RadioButton afgerondBtn2;
